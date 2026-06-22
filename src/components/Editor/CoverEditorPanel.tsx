@@ -21,14 +21,14 @@ const titleColors = [
 ];
 
 export const CoverEditorPanel = () => {
-  const { invitation, setCover } = useInvitationStore();
-  const { cover } = invitation;
+  const { draftInvitation, setCover } = useInvitationStore();
+  const { cover } = draftInvitation;
 
   return (
     <div className="h-full overflow-y-auto">
       <div className="p-4 border-b border-blush/50">
         <h3 className="font-display text-lg text-wine">封面设置</h3>
-        <p className="text-xs text-warmgray mt-1">自定义您的请柬封面</p>
+        <p className="text-xs text-warmgray mt-1">自定义您的请柬封面（草稿）</p>
       </div>
 
       <div className="p-4 space-y-6">

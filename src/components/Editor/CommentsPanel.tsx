@@ -5,12 +5,12 @@ import { useUiStore } from "@/store/useUiStore";
 import { formatDateTime, cn } from "@/utils/helpers";
 
 export const CommentsPanel = () => {
-  const { invitation, addComment, resolveComment } = useInvitationStore();
+  const { draftInvitation, addComment, resolveComment } = useInvitationStore();
   const { showComments, toggleComments, activeTab } = useUiStore();
   const [newComment, setNewComment] = useState("");
   const [authorName, setAuthorName] = useState("");
 
-  const filteredComments = invitation.comments.filter(
+  const filteredComments = draftInvitation.comments.filter(
     (c) => c.section === activeTab || c.section === "all"
   );
 
@@ -40,8 +40,7 @@ export const CommentsPanel = () => {
         </div>
         <button
           onClick={toggleComments}
-          className="p-1.5 rounded-lg hover:bg-blush/30 text-warmgray hover:text-wine transition-colors"
-        >
+          className="p-1.5 rounded-lg hover:bg-blush/30 text-warmgray hover:text-wine transition-colors">
           <X size={18} />
         </button>
       </div>
@@ -59,7 +58,7 @@ export const CommentsPanel = () => {
             <div
               key={comment.id}
               className={cn(
-                "p-3 rounded-xl bg-blush/30 border border-blush/50 transition-all",
+                "p-3 rounded-xl bg-blush/30 border border-blush/50 transition-all animate-slide-up",
                 comment.resolved && "opacity-60"
               )}
             >
@@ -87,8 +86,7 @@ export const CommentsPanel = () => {
                     {!comment.resolved && (
                       <button
                         onClick={() => resolveComment(comment.id)}
-                        className="text-xs text-rose-gold hover:text-rose-goldDark transition-colors"
-                      >
+                        className="text-xs text-rose-gold hover:text-rose-goldDark transition-colors">
                         标记已处理
                       </button>
                     )}

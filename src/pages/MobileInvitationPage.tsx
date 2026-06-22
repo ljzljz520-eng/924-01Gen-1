@@ -2,8 +2,8 @@ import { useInvitationStore } from "@/store/useInvitationStore";
 import { MapPin, Heart, Calendar, ChevronDown } from "lucide-react";
 
 export const MobileInvitationPage = () => {
-  const { invitation } = useInvitationStore();
-  const { cover, content } = invitation;
+  const { publishedInvitation } = useInvitationStore();
+  const { cover, content } = publishedInvitation;
 
   const textAlignClass = {
     left: "text-left",
@@ -100,7 +100,7 @@ export const MobileInvitationPage = () => {
 
           <section className="px-6 pb-12">
             <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-elegant border border-white/50">
-              <div className="w-12 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-transparent via-rose-gold to-transparent" />
+              <div className="w-12 h-px mx-auto mb-6 rounded-full bg-gradient-to-r from-transparent via-rose-gold to-transparent" />
               <h2 className="font-display text-2xl text-wine text-center mb-6">
                 诚挚邀请
               </h2>
@@ -144,40 +144,40 @@ export const MobileInvitationPage = () => {
                   <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-rose-gold/50 via-rose-gold/30 to-transparent -translate-x-1/2" />
                   <div className="space-y-8">
                     {content.timeline.map((item, index) => (
-                      <div
-                        key={item.id}
-                        className="relative flex items-start gap-4 animate-slide-up"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
-                        <div className="flex-1 text-right">
-                          {index % 2 === 0 && (
-                            <>
-                              <p className="text-rose-gold font-medium text-sm">
-                                {item.time}
-                              </p>
-                              <p className="text-wine font-medium mt-1">{item.title}</p>
-                              <p className="text-warmgray text-xs mt-1">
-                                {item.description}
-                              </p>
-                            </>
-                          )}
-                        </div>
-                        <div className="w-4 h-4 rounded-full bg-rose-gold border-4 border-white shadow-elegant flex-shrink-0 z-10 mt-1" />
-                        <div className="flex-1">
-                          {index % 2 === 1 && (
-                            <>
-                              <p className="text-rose-gold font-medium text-sm">
-                                {item.time}
-                              </p>
-                              <p className="text-wine font-medium mt-1">{item.title}</p>
-                              <p className="text-warmgray text-xs mt-1">
-                                {item.description}
-                              </p>
-                            </>
-                          )}
-                        </div>
+                    <div
+                      key={item.id}
+                      className="relative flex items-start gap-4 animate-slide-up"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="flex-1 text-right">
+                        {index % 2 === 0 && (
+                          <>
+                            <p className="text-rose-gold font-medium text-sm">
+                              {item.time}
+                            </p>
+                            <p className="text-wine font-medium mt-1">{item.title}</p>
+                            <p className="text-warmgray text-xs mt-0.5">
+                              {item.description}
+                            </p>
+                          </>
+                        )}
                       </div>
-                    ))}
+                      <div className="w-4 h-4 rounded-full bg-rose-gold border-4 border-white shadow-elegant flex-shrink-0 z-10 mt-1" />
+                      <div className="flex-1">
+                        {index % 2 === 1 && (
+                          <>
+                            <p className="text-rose-gold font-medium text-sm">
+                              {item.time}
+                            </p>
+                            <p className="text-wine font-medium mt-1">{item.title}</p>
+                            <p className="text-warmgray text-xs mt-0.5">
+                              {item.description}
+                            </p>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                   </div>
                 </div>
               </div>

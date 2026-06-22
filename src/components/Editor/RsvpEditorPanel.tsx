@@ -11,8 +11,8 @@ const fieldTypes: { value: RsvpFieldType; label: string }[] = [
 ];
 
 export const RsvpEditorPanel = () => {
-  const { invitation, addRsvpField, removeRsvpField } = useInvitationStore();
-  const { rsvpFields } = invitation;
+  const { draftInvitation, addRsvpField, removeRsvpField } = useInvitationStore();
+  const { rsvpFields } = draftInvitation;
   const [showAddField, setShowAddField] = useState(false);
   const [newField, setNewField] = useState<Partial<RsvpField>>({
     label: "",
@@ -60,7 +60,7 @@ export const RsvpEditorPanel = () => {
             <ClipboardList size={16} className="text-rose-gold" />
             <span className="text-sm font-medium text-wine">RSVP 表单</span>
             <span className="text-xs bg-blush text-wine px-2 py-0.5 rounded-full">
-              {rsvpFields.length} 个字段
+              {rsvpFields.length} 个字段（草稿）
             </span>
           </div>
           <button

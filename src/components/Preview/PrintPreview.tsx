@@ -1,8 +1,11 @@
 import { useInvitationStore } from "@/store/useInvitationStore";
+import { useUiStore } from "@/store/useUiStore";
 import { cn } from "@/utils/helpers";
 
 export const PrintPreview = ({ className }: { className?: string }) => {
-  const { invitation } = useInvitationStore();
+  const { getInvitationForRole } = useInvitationStore();
+  const { userRole } = useUiStore();
+  const invitation = getInvitationForRole(userRole);
   const { cover, content, guests, tables } = invitation;
 
   return (
@@ -107,9 +110,16 @@ export const PrintPreview = ({ className }: { className?: string }) => {
           </div>
         </div>
       </div>
-      <p className="text-center text-xs text-warmgray mt-4">
-        打印版预览 · A4 尺寸
-      </p>
+      <div className="flex items-center justify-center gap-2 mt-4">
+        <p className="text-center text-xs text-warmgray">
+          打印版预览 · A4 尺寸
+        </p>
+        {userRole === "editor" && (
+          <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
+            草稿版
+          </span>
+        )}
+      </div>
     </div>
   );
 };

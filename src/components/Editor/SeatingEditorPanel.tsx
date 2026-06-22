@@ -4,9 +4,9 @@ import { LayoutGrid, Users, Plus, Trash2, X } from "lucide-react";
 import { cn } from "@/utils/helpers";
 
 export const SeatingEditorPanel = () => {
-  const { invitation, addTable, removeTable, assignGuestToSeat, unassignGuest } =
+  const { draftInvitation, addTable, removeTable, assignGuestToSeat, unassignGuest } =
     useInvitationStore();
-  const { tables, guests } = invitation;
+  const { tables, guests } = draftInvitation;
   const [showAddTable, setShowAddTable] = useState(false);
   const [newTable, setNewTable] = useState({ tableNumber: 0, tableName: "", seatCount: 10 });
 
@@ -44,7 +44,7 @@ export const SeatingEditorPanel = () => {
             <LayoutGrid size={16} className="text-rose-gold" />
             <span className="text-sm font-medium text-wine">座位安排</span>
             <span className="text-xs bg-blush text-wine px-2 py-0.5 rounded-full">
-              {tables.length} 桌
+              {tables.length} 桌（草稿）
             </span>
           </div>
           <button

@@ -5,7 +5,7 @@ import { formatDateTime, cn } from "@/utils/helpers";
 import { MobilePreview } from "@/components/Preview/MobilePreview";
 
 export const CollaboratorPage = () => {
-  const { invitation, addComment } = useInvitationStore();
+  const { publishedInvitation, addComment } = useInvitationStore();
   const [newComment, setNewComment] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [selectedSection, setSelectedSection] = useState("all");
@@ -21,8 +21,8 @@ export const CollaboratorPage = () => {
 
   const filteredComments =
     selectedSection === "all"
-      ? invitation.comments
-      : invitation.comments.filter((c) => c.section === selectedSection);
+      ? publishedInvitation.comments
+      : publishedInvitation.comments.filter((c) => c.section === selectedSection);
 
   const handleSubmit = () => {
     if (!newComment.trim()) return;
@@ -47,12 +47,12 @@ export const CollaboratorPage = () => {
             <div>
               <h1 className="font-display text-xl text-wine">婚礼请柬</h1>
               <p className="text-xs text-warmgray">
-                {invitation.cover.groomName} & {invitation.cover.brideName}
+                {publishedInvitation.cover.groomName} & {publishedInvitation.cover.brideName}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2 bg-wine/10 px-4 py-2 rounded-full">
-            <span className="text-sm text-wine">👀 协作者视图</span>
+            <span className="text-sm text-wine">👀 协作者视图 · 正式版本 v{publishedInvitation.publishedVersion}</span>
           </div>
         </div>
       </header>
@@ -71,7 +71,7 @@ export const CollaboratorPage = () => {
                 <MessageCircle size={20} className="text-rose-gold" />
                 <h2 className="font-display text-lg text-wine">评论建议</h2>
                 <span className="text-xs bg-blush text-wine px-2 py-0.5 rounded-full">
-                  {invitation.comments.length}
+                  {publishedInvitation.comments.length}
                 </span>
               </div>
               <div className="flex gap-1 flex-wrap">

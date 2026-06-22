@@ -1,8 +1,6 @@
-const STORAGE_KEY = "wedding-invitation-data";
-
-export const saveToStorage = (data: unknown): void => {
+export const saveToStorage = (key: string, data: unknown): void => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(key, JSON.stringify(data));
   } catch (e) {
     console.error("Failed to save to localStorage:", e);
   }

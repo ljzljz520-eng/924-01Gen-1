@@ -3,9 +3,9 @@ import { FileText, Clock, Plus, Trash2, GripVertical } from "lucide-react";
 import type { TimelineItem } from "@/types";
 
 export const ContentEditorPanel = () => {
-  const { invitation, setContent, addTimelineItem, updateTimelineItem, removeTimelineItem } =
+  const { draftInvitation, setContent, addTimelineItem, updateTimelineItem, removeTimelineItem } =
     useInvitationStore();
-  const { content } = invitation;
+  const { content } = draftInvitation;
 
   const handleAddTimeline = () => {
     const newItem: Omit<TimelineItem, "id"> = {
@@ -21,7 +21,7 @@ export const ContentEditorPanel = () => {
     <div className="h-full overflow-y-auto">
       <div className="p-4 border-b border-blush/50">
         <h3 className="font-display text-lg text-wine">文案编辑</h3>
-        <p className="text-xs text-warmgray mt-1">编辑邀请语和婚礼流程</p>
+        <p className="text-xs text-warmgray mt-1">编辑邀请语和婚礼流程（草稿）</p>
       </div>
 
       <div className="p-4 space-y-6">

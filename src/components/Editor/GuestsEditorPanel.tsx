@@ -17,8 +17,8 @@ const statusLabels: Record<RsvpStatus, string> = {
 };
 
 export const GuestsEditorPanel = () => {
-  const { invitation, addGuest, updateGuest, removeGuest } = useInvitationStore();
-  const { guests } = invitation;
+  const { draftInvitation, addGuest, updateGuest, removeGuest } = useInvitationStore();
+  const { guests } = draftInvitation;
   const [searchTerm, setSearchTerm] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingGuest, setEditingGuest] = useState<Guest | null>(null);
@@ -64,7 +64,7 @@ export const GuestsEditorPanel = () => {
             <Users size={16} className="text-rose-gold" />
             <span className="text-sm font-medium text-wine">宾客名单</span>
             <span className="text-xs bg-blush text-wine px-2 py-0.5 rounded-full">
-              {guests.length} 人
+              {guests.length} 人（草稿）
             </span>
           </div>
           <button
